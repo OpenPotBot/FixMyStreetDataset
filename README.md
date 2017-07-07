@@ -1,4 +1,5 @@
-# FixMyStreetDataSet
+# FixMyStreetDataSetCreator
+
 
 ## What does this do?
 
@@ -13,7 +14,7 @@ PotBot is an interactive bot for classifying and enriching street faults. It use
 
 ## License
 
-The code in this repositry is released under a MIT license. 
+The code in this repo is released under a MIT license. 
 
 
 ## How to install
