@@ -16,4 +16,15 @@ PotBot is an interactive bot for classifying and enriching street faults. It use
 The code in this repositry is released under a MIT license. 
 
 
+## How to install
 
+It is highly recommended that you make use of a virtualenv sandbox for your python code.
+
+1. Create a new virtualenv
+2. Clone or download the files into a folder
+3. Run `python get_data·py`
+4. Make a cup of tea
+5. Review the files which will now exist in a folder called `data`
+
+
+Pull requests welcome! Also if you think you can build a model that will solve the problem raised above, get in touch.
