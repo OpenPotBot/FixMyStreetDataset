@@ -1,0 +1,25 @@
+CREATE OR REPLACE FUNCTION mapdata.potbotgis(
+	_name text,
+	_x integer,
+	_y integer,
+	_tolerance integer)
+    RETURNS table (description text) AS
+$func$
+DECLARE
+	 currid numeric;     
+BEGIN
+	INSERT INTO mapdata.potbotgis_xy(name, x_coord, y_coord, geom) VALUES
+	(_name, _x, _y, ST_GeomFROMText('POINT(' || cast(_x as text)|| ' ' || cast(_y as text) || ')', 27700)) RETURNING id INTO currid;
+
+	RETURN query        
+    SELECT array_to_string(ARRAY(SELECT r.description || '|' || r.category
+	FROM mapdata.potbotgis_xy p
+		INNER JOIN mapdata.road_maintenance r ON ST_DWithin(p.geom, r.wkb_geometry, _tolerance)        
+	WHERE p.id = currid), '^');
+END
+$func$ LANGUAGE plpgsql;
+    
+            
+
+    
+    select mapdata.potbotgis('test', 365516, 168397, 10)
